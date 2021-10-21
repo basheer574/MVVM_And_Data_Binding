@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModelXml"
+            type="com.example.mvvmanddatabinding.viewModels.DiceViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.ui.HomeActivity">
+
+        <TextView
+            android:id="@+id/roll_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="32sp"
+            android:gravity="center"
+            android:textColor="@color/light_green"
+            android:text="@{String.valueOf(viewModelXml.currentRoll)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/current_roll_image"
+            diceRoll="@{viewModelXml.currentRoll}"
+            android:layout_width="match_parent"
+            android:layout_height="264dp"
+            android:layout_margin="32dp"
+            android:layout_marginTop="328dp"
+            app:layout_constraintEnd_toEndOf="@+id/roll_number"
+            app:layout_constraintStart_toStartOf="@+id/roll_number"
+            app:layout_constraintTop_toBottomOf="@+id/roll_number"
+            tools:ignore="ContentDescription" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_roll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="48dp"
+            android:background="@drawable/button_shape"
+            android:onClick="@{()-> viewModelXml.getRandomDiceRoll()}"
+            android:text="@string/roll"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/current_roll_image"
+            app:layout_constraintStart_toStartOf="@+id/current_roll_image"
+            app:layout_constraintTop_toBottomOf="@+id/current_roll_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

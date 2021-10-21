@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MVVM And Data Binding</string>
+    <string name="roll">Roll</string>
+</resources>
